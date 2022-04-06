@@ -1,0 +1,25 @@
+{
+  "name": "near-offline-sign",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dantenetwork/near-offline-sign.git"
+  },
+  "author": "hthuang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dantenetwork/near-offline-sign/issues"
+  },
+  "homepage": "https://github.com/dantenetwork/near-offline-sign#readme",
+  "dependencies": {
+    "commander": "^9.1.0",
+    "js-sha256": "^0.9.0",
+    "near-api-js": "^0.44.2",
+    "near-seed-phrase": "^0.2.0"
+  }
+}
