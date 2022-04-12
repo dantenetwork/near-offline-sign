@@ -94,7 +94,11 @@ console.log('action', actions);
         }),
       });
       const signedSerializedTx = signedTransaction.encode();
-      console.log(Buffer.from(signedSerializedTx).toString("base64"));
+
+      // create write stream to write data to file
+      const writerStream = fs.createWriteStream(config.TX_DATA);
+      writerStream.write(Buffer.from(signedSerializedTx).toString("base64"), 'UTF8');
+      writerStream.end();
     })
   },
 }
