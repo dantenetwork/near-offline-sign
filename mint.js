@@ -45,9 +45,7 @@ function parseAddressInfo(data) {
 module.exports = {
   sign: function(nonce, blockHash) {
     getAddressInfo(async (data) => {
-      console.log('data', data);
       let addrInfos = parseAddressInfo(data);
-      console.log('addrInfos', addrInfos);
 
       let actions = [];
       for (let i = 0; i < addrInfos.length; i++) {
@@ -57,16 +55,16 @@ module.exports = {
           description: addrInfo[3],
           media: addrInfo[4]
         }
-        console.log({ token_id: addrInfo[1], receiver_id: addrInfo[0], token_metadata: metaData });
+        
         const action = transactions.functionCall(
             "nft_mint",
             { token_id: addrInfo[1], receiver_id: addrInfo[0], token_metadata: metaData },
             "30000000000000",
-            "8000000000000000000000"
+            "10000000000000000000000"
           );
         actions.push(action);
-      }      
-console.log('action', actions);
+      }
+      
       const blockHashDecoded = utils.serialize.base_decode(blockHash);
       // create transaction
       const keyPair = utils.key_pair.KeyPairEd25519.fromString(keyFile.private_key);
