@@ -4,7 +4,13 @@ let mainnet = {
 	NETWORK_ID: 'testnet',
 	mint: {
 		CONTRACT_ADDR: 'nft.georgecross.testnet',
-		SENDER: 'georgecross.testnet'
+		SENDER: 'nft.georgecross.testnet'
+	},
+	deploy: {
+		WASM: './work/non_fungible_token.wasm',
+		CONTRACT_ADDR: 'nft.georgecross.testnet',
+		OWNER: 'nft.georgecross.testnet',
+		SENDER: 'nft.georgecross.testnet'
 	}
 }
 
