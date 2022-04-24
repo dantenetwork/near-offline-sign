@@ -1,16 +1,9 @@
 const { utils, transactions } = require("near-api-js");
 const sha256 = require("js-sha256");
-const path = require("path");
 const fs = require("fs");
-const homedir = require("os").homedir();
 const config = require('./config');
+const helper = require("./helper");
 // const CREDENTIALS_DIR = ".near-credentials";
-const sender = config.SENDER;
-const keyFilePath = path.resolve(
-  homedir,
-  `./.near-credentials/${config.NETWORK_ID}/${sender}.json`
-);
-const keyFile = require(keyFilePath);
 
 // read address infomation from file
 function getAddressInfo(callback) {
@@ -44,6 +37,8 @@ function parseAddressInfo(data) {
 
 module.exports = {
   sign: function(nonce, blockHash) {
+    const sender = config.mint.SENDER;
+    
     getAddressInfo(async (data) => {
       let addrInfos = parseAddressInfo(data);
 
@@ -67,11 +62,12 @@ module.exports = {
       
       const blockHashDecoded = utils.serialize.base_decode(blockHash);
       // create transaction
-      const keyPair = utils.key_pair.KeyPairEd25519.fromString(keyFile.private_key);
+      let privateKey = helper.getPrivateKey(sender);
+      const keyPair = utils.key_pair.KeyPairEd25519.fromString(privateKey);
       const transaction = transactions.createTransaction(
         sender,
         keyPair.getPublicKey(),
-        config.CONTRACT_ADDR,
+        config.mint.CONTRACT_ADDR,
         nonce,
         actions,
         blockHashDecoded
