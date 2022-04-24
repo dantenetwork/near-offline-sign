@@ -12,7 +12,7 @@ async function main() {
 	  .version('0.1.0')
 	  .option('-m, --mint', 'sign minting transaction')
 	  .option('-d, --deploy', 'deploy contract')
-	  .option('-s, --sub_account <new_account_name, from_account_name>', 'create sub account', list)
+	  .option('-s, --sub_account <new_account_name>,<from_account_name>', 'create sub account', list)
 	  .option('-n, --nonce <nonce>', 'nonce for first transaction')
 	  .option('-b, --block <block>', 'block address')
 	  .parse(process.argv);
