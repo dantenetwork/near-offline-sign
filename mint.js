@@ -54,7 +54,7 @@ module.exports = {
         const action = transactions.functionCall(
             "nft_mint",
             { token_id: addrInfo[1], receiver_id: addrInfo[0], token_metadata: metaData },
-            "30000000000000",
+            "10000000000000",
             "10000000000000000000000"
           );
         actions.push(action);
